@@ -4,26 +4,26 @@
 </body>
 <script>
 //create a function to select the user choice
-function userPick() {
+function getUserPick() {
   let userChoice = prompt('What is your choice?');
   return userChoice;
 }
 
 //create a function to select the computer choice
-function computerPick() {
+function getComputerPick() {
   var options = ['rock', 'scissor', 'paper'];
   let computerChoice = options[Math.floor(Math.random() * options.length)];
   return computerChoice;
 }
 
 //create a function to play the game and check who is the winner
-function game() {
+function playGame() {
   let counterWinUser = 0
   let counterWinPc = 0
   while ((counterWinUser || counterWinPc) <= 4 ) {
-    let userChoice = userPick();
+    let userChoice = getUserPick();
     console.log(userChoice);
-    let computerChoice = computerPick();
+    let computerChoice = getComputerPick();
     console.log(computerChoice);
     if (userChoice === computerChoice) {
       alert('Draw!');
