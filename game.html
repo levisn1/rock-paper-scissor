@@ -20,102 +20,108 @@ function getComputerPick() {
 function playGame() {
   let counterWinUser = 0
   let counterWinPc = 0
-  while ((counterWinUser || counterWinPc) <= 4 ) {
-    let userChoice = getUserPick();
-    console.log(userChoice);
+  let surrender = 0
+  while ((counterWinUser <= 4) && (counterWinPc <= 4)) {
     let computerChoice = getComputerPick();
     console.log(computerChoice);
-    if (userChoice === computerChoice) {
-      alert('Draw!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (userChoice === 'rock' && computerChoice === 'scissor') {
-      counterWinUser += 1;
-      alert('User win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (userChoice === 'rock' && computerChoice === 'paper') {
-      counterWinPc += 1;
-      alert('Pc win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (userChoice === 'scissor' && computerChoice === 'rock') {
-      counterWinPc += 1;
-      alert('Pc win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (userChoice === 'scissor' && computerChoice === 'paper') {
-      counterWinUser += 1;
-      alert('User win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (userChoice === 'paper' && computerChoice === 'rock') {
-      counterWinUser += 1;
-      alert('User win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (userChoice === 'paper' && computerChoice === 'scissor') {
-      counterWinPc += 1;
-      alert('Pc win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (computerChoice === 'rock' && userChoice === 'scissor') {
-      counterWinPc += 1;
-      alert('Pc win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (computerChoice === 'rock' && userChoice === 'paper') {
-      counterWinUser += 1;
-      alert('User win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (computerChoice === 'scissor' && userChoice === 'rock') {
-      counterWinUser += 1;
-      alert('User win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (computerChoice === 'scissor' && userChoice === 'paper') {
-      counterWinPc += 1;
-      alert('Pc win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (computerChoice === 'paper' && userChoice === 'rock') {
-      counterWinPc += 1;
-      alert('Pc win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (computerChoice === 'paper' && userChoice === 'scissor') {
-      counterWinUser += 1;
-      alert('User win!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
-    }
-    else if (computerChoice === ('paper' || 'rock' || 'scissor') && userChoice === null) {
-      alert('game aborted!');
-      console.log(counterWinUser)
-      console.log(counterWinPc)
+    let userChoice = getUserPick();
+    console.log(userChoice);
+    if (userChoice === null) {
+      surrender = 1;
       break;
     }
-    else {
+    if (userChoice !== '') {
+      if (userChoice === computerChoice) {
+        alert('Draw round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (userChoice === 'rock' && computerChoice === 'scissor') {
+        counterWinUser += 1;
+        alert('User win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (userChoice === 'rock' && computerChoice === 'paper') {
+        counterWinPc += 1;
+        alert('Pc win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (userChoice === 'scissor' && computerChoice === 'rock') {
+        counterWinPc += 1;
+        alert('Pc win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (userChoice === 'scissor' && computerChoice === 'paper') {
+        counterWinUser += 1;
+        alert('User win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (userChoice === 'paper' && computerChoice === 'rock') {
+        counterWinUser += 1;
+        alert('User win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (userChoice === 'paper' && computerChoice === 'scissor') {
+        counterWinPc += 1;
+        alert('Pc win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (computerChoice === 'rock' && userChoice === 'scissor') {
+        counterWinPc += 1;
+        alert('Pc win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (computerChoice === 'rock' && userChoice === 'paper') {
+        counterWinUser += 1;
+        alert('User win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (computerChoice === 'scissor' && userChoice === 'rock') {
+        counterWinUser += 1;
+        alert('User win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (computerChoice === 'scissor' && userChoice === 'paper') {
+        counterWinPc += 1;
+        alert('Pc win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (computerChoice === 'paper' && userChoice === 'rock') {
+        counterWinPc += 1;
+        alert('Pc win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      }
+      else if (computerChoice === 'paper' && userChoice === 'scissor') {
+        counterWinUser += 1;
+        alert('User win the round!');
+        console.log(counterWinUser)
+        console.log(counterWinPc)
+      } else {
+        alert('Pick between rock, paper or scissor!');
+      }
+    } else {
       alert('Pick between rock, paper or scissor!');
     }
   }
-  counterWinUser === 5 ? alert('User Win the match') : alert('Pc Win the match');
+  if (surrender === 1) {
+    alert('Pc Won the game due User forfait')
+  } else {
+    counterWinUser > counterWinPc ? alert('User Won the match') : alert('Pc Won the match');
+  }
 }
 
-game()
+playGame()
 
 </script>
 </html>

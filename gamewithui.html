@@ -1,0 +1,155 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Scissor Paper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id='main-container'>
+    <header>
+      <div class='button' id='play-button'>PLAY</div>
+    </header>
+    <div id='controls-container'>
+      <div class='button control' name='rock'>ROCK</div>
+      <div class='button control' name='paper'>PAPER</div>
+      <div class='button control' name='scissor'>SCISSOR</div>
+    </div>
+    <div id='display-container'>
+      <div>
+        <p>USER SCORE <span id='user-score'>0</span></p>
+      </div>
+      <div>
+        <p id='gamestatus'>DISPLAY LIVE GAME</p>
+      </div>
+      <div>
+        <p>PC SCORE <span id='pc-score'>0</span></p>
+      </div>
+    </div>
+    <footer>
+      <div class='button' id='quit-button'>QUIT</div>
+    </footer>
+  </div>
+</body>
+<script>
+  const playbutton = document.querySelector('#play-button');
+  const quitbutton = document.querySelector('#quit-button');
+  const controls = Array.from(document.querySelectorAll('.control'));
+  const pcscore = document.querySelector('#pc-score');
+  const userscore = document.querySelector('#user-score');
+  const gamestatus = document.querySelector('#gamestatus');
+
+  quitbutton.addEventListener('click', startgame)
+
+  let computerChoice;
+  let userChoice;
+  let counterWinUser;
+  let counterWinPc;
+
+  startgame();
+
+  function startgame() {
+    playbutton.addEventListener('click', getComputerPick);
+    counterWinUser = 0;
+    counterWinPc = 0;
+    userChoice = 0;
+    computerChoice = 0;
+    playbutton.textContent = 'PLAY';
+    gamestatus.textContent = 'DISPLAY LIVE GAME';
+    pcscore.textContent = 0;
+    userscore.textContent = 0;
+  }
+
+  function getComputerPick() {
+    playbutton.removeEventListener('click', getComputerPick);
+    playbutton.textContent = 'In GAME';
+    if ((counterWinUser <= 4) && (counterWinPc <= 4)) {
+      var options = ['rock', 'scissor', 'paper'];
+      computerChoice = options[Math.floor(Math.random() * options.length)];
+      getUserPick()
+    } else {
+      if (counterWinUser > counterWinPc) {
+        gamestatus.textContent = 'User Win!';
+      } else {
+        gamestatus.textContent = 'PC Win!';
+      }
+      startgame();
+    }
+  }
+
+  function clickPick(e) {
+    userChoice = e.target.attributes.name.nodeValue;
+    playGame();
+  }
+
+  function getUserPick() {
+    gamestatus.textContent = 'Pick between rock, paper or scissor!';
+    controls.forEach((control) => {
+      control.addEventListener('click', clickPick);
+    });
+  }
+
+  function removeEventListenerControls() {
+    controls.forEach((control) => {
+      control.removeEventListener('click', clickPick);
+    });
+  }
+
+  function playGame() {
+    removeEventListenerControls()
+    if (userChoice === computerChoice) {
+      gamestatus.textContent = 'DRAW';
+    }
+    else if (userChoice === 'rock' && computerChoice === 'scissor') {
+      counterWinUser += 1;
+      gamestatus.textContent = 'User wins the round!';
+    }
+    else if (userChoice === 'rock' && computerChoice === 'paper') {
+      counterWinPc += 1;
+      gamestatus.textContent = 'Pc wins the round!';
+    }
+    else if (userChoice === 'scissor' && computerChoice === 'rock') {
+      counterWinPc += 1;
+      gamestatus.textContent = 'Pc wins the round!';
+    }
+    else if (userChoice === 'scissor' && computerChoice === 'paper') {
+      counterWinUser += 1;
+      gamestatus.textContent = 'User wins the round!';
+    }
+    else if (userChoice === 'paper' && computerChoice === 'rock') {
+      counterWinUser += 1;
+      gamestatus.textContent = 'User wins the round!';
+    }
+    else if (userChoice === 'paper' && computerChoice === 'scissor') {
+      counterWinPc += 1;
+      gamestatus.textContent = 'Pc wins the round!';
+    }
+    else if (computerChoice === 'rock' && userChoice === 'scissor') {
+      counterWinPc += 1;
+      gamestatus.textContent = 'Pc wins the round!';
+    }
+    else if (computerChoice === 'rock' && userChoice === 'paper') {
+      counterWinUser += 1;
+      gamestatus.textContent = 'User wins the round!';
+    }
+    else if (computerChoice === 'scissor' && userChoice === 'rock') {
+      counterWinUser += 1;
+      gamestatus.textContent = 'User wins the round!';
+    }
+    else if (computerChoice === 'scissor' && userChoice === 'paper') {
+      counterWinPc += 1;
+      gamestatus.textContent = 'Pc wins the round!';
+    }
+    else if (computerChoice === 'paper' && userChoice === 'rock') {
+      counterWinPc += 1;
+      gamestatus.textContent = 'Pc wins the round!';
+    }
+    else if (computerChoice === 'paper' && userChoice === 'scissor') {
+      counterWinUser += 1;
+      gamestatus.textContent = 'User wins the round!';
+    }
+    pcscore.textContent = counterWinPc;
+    userscore.textContent = counterWinUser;
+    setTimeout(getComputerPick, 1300);
+  }
+</script>
+</html>
